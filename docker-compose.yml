@@ -6,6 +6,8 @@ services:
     build: ./frontend
     container_name: frontend
     stdin_open: true
+    environment:
+      BACKEND_BASE_URL: ${BACKEND_BASE_URL}
     volumes:
       - ./frontend/src:/usr/src/app/src
     command: ['npm', 'run', 'develop']
@@ -14,6 +16,7 @@ services:
   backend:
     build: ./backend
     container_name: backend
+    environment:
     volumes:
       - ./backend/src:/usr/src/app/src
     command: ['npm', 'run', 'watch']
